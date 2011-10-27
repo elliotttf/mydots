@@ -126,11 +126,3 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-function ddrush() {
-  front=${PWD##*\/www\/}
-  dir=${front%%\/*}
-  u=`whoami`
-  sudo -u www-data /usr/bin/drush -l http://$u.$dir.webchefs.org $@
-}
-
-alias d=ddrush
