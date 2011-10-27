@@ -67,23 +67,23 @@ esac
 
 # Add current git branch (if applicale) to the terminal prompt.
 function pgb {
-  ref=$(/usr/bin/git symbolic-ref HEAD 2> /dev/null) || return
+  ref=$(/usr/local/git/bin/git symbolic-ref HEAD 2> /dev/null) || return
   dirty=""
   untracked=""
 
    # Disallow unstaged changes in the working tree
-  if ! /usr/bin/git diff-files --quiet --ignore-submodules --
+  if ! /usr/local/git/bin/git diff-files --quiet --ignore-submodules --
   then
     dirty="*"
   fi
 
   # Disallow uncommitted changes in the index
-  if ! /usr/bin/git diff-index --cached --quiet HEAD --ignore-submodules --
+  if ! /usr/local/git/bin/git diff-index --cached --quiet HEAD --ignore-submodules --
   then
     dirty="*"
   fi
 
-  status=`/usr/bin/git status --porcelain 2>/dev/null| grep "^??" | wc -l`
+  status=`/usr/local/git/bin/git status --porcelain 2>/dev/null| grep "^??" | wc -l`
   if [ $status -gt 0 ]; then
     untracked="+"
   fi
@@ -122,7 +122,7 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
 fi
 
