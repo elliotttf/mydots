@@ -13,6 +13,7 @@ set backspace=2             "Use standard backspace behavior
 set ruler                   "Show line and column number
 set formatoptions=1         "Don't wrap text after a one-letter word
 set linebreak               "Break lines when appropriate
+set mouse=a                 "Enable mouse interactions
 
 "Drupal settings
 set expandtab               "Tab key inserts spaces
