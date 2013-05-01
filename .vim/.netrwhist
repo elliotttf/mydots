@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/elliotttf/Documents/dev/trainingwheels/controller/web/js/src'
+let g:netrw_dirhist_2='/Users/elliotttf/Documents/dev/trainingwheels/controller/web/js/src/modules'
+let g:netrw_dirhist_3='/Users/elliotttf/Documents/dev/trainingwheels/controller/web/js/src'
+let g:netrw_dirhist_4='/Users/elliotttf/Documents/dev/trainingwheels/controller/web/js/src/modules'
+let g:netrw_dirhist_5='/Users/elliotttf/Documents/dev/trainingwheels/controller/web/js/src'
+let g:netrw_dirhist_6='/Users/elliotttf/Documents/dev/trainingwheels/controller/web/js/src/modules'

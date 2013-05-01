@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 "Enable filetype detection
 :filetype on
 
@@ -13,6 +15,7 @@ set backspace=2             "Use standard backspace behavior
 set ruler                   "Show line and column number
 set formatoptions=1         "Don't wrap text after a one-letter word
 set linebreak               "Break lines when appropriate
+set mouse=a                 "Enable mouse interactions
 
 "Drupal settings
 set expandtab               "Tab key inserts spaces
@@ -20,6 +23,7 @@ set tabstop=2               "Use two spaces for tabs
 set shiftwidth=2            "Use two spaces for auto-indent
 let php_htmlInStrings = 1   "Syntax highlight for HTML inside PHP strings
 let php_parent_error_open = 1 "Display error for unmatch brackets
+
 
 "Enable syntax highlighting
 if &t_Co > 1
@@ -35,6 +39,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.inc set filetype=php
     autocmd BufRead,BufNewFile *.profile set filetype=php
     autocmd BufRead,BufNewFile *.theme set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
   augroup END
 endif
 syntax on
@@ -51,3 +56,4 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 let a = matchadd('ExtraWhitespace', '\s\+$')
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 let b = matchadd('OverLength', '\(^\(\s\)\{-}\(*\|//\|/\*\)\{1}\(.\)*\(\%81v\)\)\@<=\(.\)\{1,}$')
+
