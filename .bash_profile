@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -67,23 +69,23 @@ esac
 
 # Add current git branch (if applicale) to the terminal prompt.
 function pgb {
-  ref=$(/usr/local/git/bin/git symbolic-ref HEAD 2> /dev/null) || return
+  ref=$(/usr/local/bin/git symbolic-ref HEAD 2> /dev/null) || return
   dirty=""
   untracked=""
 
    # Disallow unstaged changes in the working tree
-  if ! /usr/local/git/bin/git diff-files --quiet --ignore-submodules --
+  if ! /usr/local/bin/git diff-files --quiet --ignore-submodules --
   then
     dirty="*"
   fi
 
   # Disallow uncommitted changes in the index
-  if ! /usr/local/git/bin/git diff-index --cached --quiet HEAD --ignore-submodules --
+  if ! /usr/local/bin/git diff-index --cached --quiet HEAD --ignore-submodules --
   then
     dirty="*"
   fi
 
-  status=`/usr/local/git/bin/git status --porcelain 2>/dev/null| grep "^??" | wc -l`
+  status=`/usr/local/bin/git status --porcelain 2>/dev/null| grep "^??" | wc -l`
   if [ $status -gt 0 ]; then
     untracked="+"
   fi
@@ -94,8 +96,8 @@ function pgb {
 PS1="${PS1/\\$/\$(pgb)\\$}"
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if [ -x /usr/local/bin/gdircolors ]; then
+    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -122,10 +124,10 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
 fi
 
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source ~/.git-completion.bash
