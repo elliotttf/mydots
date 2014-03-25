@@ -69,23 +69,23 @@ esac
 
 # Add current git branch (if applicale) to the terminal prompt.
 function pgb {
-  ref=$(/usr/local/bin/git symbolic-ref HEAD 2> /dev/null) || return
+  ref=$(/usr/bin/git symbolic-ref HEAD 2> /dev/null) || return
   dirty=""
   untracked=""
 
    # Disallow unstaged changes in the working tree
-  if ! /usr/local/bin/git diff-files --quiet --ignore-submodules --
+  if ! /usr/bin/git diff-files --quiet --ignore-submodules --
   then
     dirty="*"
   fi
 
   # Disallow uncommitted changes in the index
-  if ! /usr/local/bin/git diff-index --cached --quiet HEAD --ignore-submodules --
+  if ! /usr/bin/git diff-index --cached --quiet HEAD --ignore-submodules --
   then
     dirty="*"
   fi
 
-  status=`/usr/local/bin/git status --porcelain 2>/dev/null| grep "^??" | wc -l`
+  status=`/usr/bin/git status --porcelain 2>/dev/null| grep "^??" | wc -l`
   if [ $status -gt 0 ]; then
     untracked="+"
   fi
