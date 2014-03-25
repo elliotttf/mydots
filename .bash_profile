@@ -95,17 +95,11 @@ function pgb {
 
 PS1="${PS1/\\$/\$(pgb)\\$}"
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/local/bin/gdircolors ]; then
-    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+# Colors!
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+export GREP_OPTIONS='--color=always'
+export GREP_COLOR='1;35;40'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -131,3 +125,12 @@ fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 source ~/.git-completion.bash
+
+# {{{
+# Node Completion - Auto-generated, do not touch.
+shopt -s progcomp
+for f in $(command ls ~/.node-completion); do
+  f="$HOME/.node-completion/$f"
+  test -f "$f" && . "$f"
+done
+# }}}
