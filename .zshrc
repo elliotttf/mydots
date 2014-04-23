@@ -48,27 +48,37 @@ ZSH_THEME="miloshadzic"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx)
+plugins=(osx git)
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export PATH="/Users/elliotttf/.composer/vendor/bin:/Users/elliotttf/.rvm/gems/ruby-2.0.0-p247/bin:/Users/elliotttf/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/elliotttf/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/elliotttf/.rvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+source $ZSH/oh-my-zsh.sh
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Mac style shortcuts
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
+
+# Display MotD
+if [[ -e $HOME/.motd ]]; then cat $HOME/.motd; fi
+
+# Setup aliases
+if [[ -e $HOME/.zshrc_aliases ]]; then source $HOME/.zshrc_aliases; fi
+

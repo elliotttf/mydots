@@ -1,0 +1,10 @@
+# Vagrant
+alias vu='vagrant up'
+alias vd='vagrant halt'
+
+# 4K
+alias dev1='ssh elliott@dev1.fourkitchens.com'
+alias dev2='ssh elliott@dev2.fourkitchens.com'
+alias web4='ssh elliott@web4.fourkitchens.com'
+alias web5='ssh elliott@web5.fourkitchens.com'
+alias projects='ssh elliott@projects.fourkitchens.com'
