@@ -77,7 +77,11 @@ bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
 # Display MotD
-if [[ -e $HOME/.motd ]]; then cat $HOME/.motd; fi
+if [[ -e $HOME/.motd ]]; then
+  ls $HOME/.motd | sort -R | head -n1 | while read file; do
+    cat $HOME/.motd/$file
+  done
+fi
 
 # Setup aliases
 if [[ -e $HOME/.zshrc_aliases ]]; then source $HOME/.zshrc_aliases; fi
