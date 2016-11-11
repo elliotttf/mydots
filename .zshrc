@@ -53,7 +53,7 @@ plugins=(osx git)
 
 # User configuration
 
-export PATH="/Users/elliotttf/.composer/vendor/bin:/Users/elliotttf/.rvm/gems/ruby-2.0.0-p247/bin:/Users/elliotttf/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/elliotttf/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/elliotttf/.rvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
+export PATH="/Users/elliotttf/.composer/vendor/bin:/Users/elliotttf/.rvm/gems/ruby-2.0.0-p247/bin:/Users/elliotttf/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/elliotttf/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/elliotttf/.rvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/elliotttf/bin:/usr/local/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -78,11 +78,30 @@ bindkey "^[e" end-of-line
 
 # Display MotD
 if [[ -e $HOME/.motd ]]; then
-  ls $HOME/.motd | sort -R | head -n1 | while read file; do
+  ls $HOME/.motd | gsort -R | head -n1 | while read file; do
     cat $HOME/.motd/$file
   done
 fi
 
 # Setup aliases
 if [[ -e $HOME/.zshrc_aliases ]]; then source $HOME/.zshrc_aliases; fi
+
+# NVM
+source $HOME/.nvm/nvm.sh
+
+# Apiary
+export APIARY_API_KEY="60ffc3d15e06e6af4fbdf8e60c5f251b"
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ $(nvm version) != $(nvm version default)  ]]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
