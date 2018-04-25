@@ -1,7 +1,7 @@
 [user]
   name = Elliott Foster
   email = elliottf@codebrews.com
-  signingkey = 2EA7C6DD
+  signingkey = 4E035EFE0CD2FE4B
 
 [color]
   diff = auto
@@ -15,3 +15,6 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
+
+[includeIf "gitdir:~/dev/nbc/"]
+  path = ~/.gitconfig4k

@@ -20,7 +20,7 @@ brew install libtiff
 brew install little-cms2
 brew install pcre
 brew install coreutils
-brew install gnupg
+brew install gpg
 brew install jbig2dec
 brew install libevent
 brew install libtool

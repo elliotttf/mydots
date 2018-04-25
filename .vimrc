@@ -58,3 +58,6 @@ highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 let b = matchadd('OverLength', '\(^\(\s\)\{-}\(*\|//\|/\*\)\{1}\(.\)*\(\%81v\)\)\@<=\(.\)\{1,}$')
 
 au BufRead,BufNewFile *.handlebars,*.hbs set ft=html syntax=handlebars
+
+cabbrev E Explore
+
